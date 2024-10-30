@@ -21,6 +21,9 @@ timeVector = 0:dT:(settings.duration-dT);
 [position,orientation,velocity,acceleration,angularVelocity] = trajectory_gen(settings);
 [ImuMag_data, ImuMag_bias, theta_cell, aux] = sensor_data_gen(settings, position, orientation, acceleration, angularVelocity, N);
 
+save('generated_data.mat', 'position', 'orientation', 'velocity', 'acceleration', 'angularVelocity', ...
+    'ImuMag_data', 'ImuMag_bias', 'theta_cell', 'aux', 'settings', 'timeVector');
+
 % create groundtruth 
 xs = cell(N, 1);
 for i = 1 : N
